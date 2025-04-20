@@ -1,0 +1,80 @@
+# 1. Version control
+.git/
+.gitignore
+.hg/
+.svn/
+
+# 2. IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 3. Python cache and test artifacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+
+# 4. Build and distribution outputs
+dist/
+build/
+out/
+
+# 5. Test directories and files
+test/
+tests/
+
+# 6. Debug and log files
+debug/
+*.log
+
+# 7. Environment and secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+
+# 8. Local and temporary files
+.local/
+tmp/
+temp/
+*.tmp
+
+# 9. Documentation and markdown
+README*
+*.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+TODO.md
+
+# 10. Docker and compose files
+Dockerfile*
+docker-compose*
+
+# 11. Project-specific patterns
+# (No node_modules, Go, or Java artifacts detected, so not included)
+
+# 12. Miscellaneous
+*.example
+
+# 13. Exclude development requirements (keep only production requirements)
+requirements/local.txt
+
+# 14. Exclude GitHub and CI/CD config
+.github/
+
+# 15. Exclude migration pyc files (but keep migration scripts)
+**/migrations/*.pyc
+
+# 16. Exclude media files (if not needed in build context)
+media/
+
+# 17. Exclude static files if built elsewhere (uncomment if needed)
+# static/
+
+# End of .dockerignore

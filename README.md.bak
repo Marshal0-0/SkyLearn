@@ -90,59 +90,6 @@ Last but not least, go to this address http://127.0.0.1:8000
 
 #### _Check [this page](https://adilmohak.github.io/dj-lms-starter/) for more insight and support._
 
-# Running with Docker
-
-You can run SkyLearn using Docker for a fully containerized setup. This project provides a `Dockerfile` and a `docker-compose.yml` for easy development and deployment.
-
-## Project-specific Docker details
-
-- **Python version:** 3.8 (as specified in the Dockerfile)
-- **Database:** PostgreSQL (latest)
-- **Ports:**
-  - App: `8000` (exposed on host)
-  - Database: not exposed to host (internal only)
-- **Static/media directories:** `/app/staticfiles` and `/app/media` are created and owned by the app user in the container.
-- **Default command:** Runs Django with Gunicorn (`gunicorn config.wsgi:application --bind 0.0.0.0:8000`)
-
-## Environment variables
-
-- The application expects environment variables to be set in a `.env` file at the project root. You can use `.env.example` as a template:
-  - Copy `.env.example` to `.env` and adjust values as needed (e.g., database credentials, Django secret key, etc).
-- The database service uses the following variables (see `docker-compose.yml`):
-  - `POSTGRES_DB=skylearn`
-  - `POSTGRES_USER=skylearn`
-  - `POSTGRES_PASSWORD=skylearn`
-
-## Build and run instructions
-
-1. **Copy and configure environment variables:**
-   ```bash
-   cp .env.example .env
-   # Edit .env as needed
-   ```
-2. **Build and start the services:**
-   ```bash
-   docker compose up --build
-   ```
-   This will build the app image and start both the Django app and PostgreSQL database.
-
-3. **Run database migrations and create a superuser:**
-   In a separate terminal, run:
-   ```bash
-   docker compose exec app python manage.py migrate
-   docker compose exec app python manage.py createsuperuser
-   ```
-
-4. **Access the application:**
-   - Open [http://localhost:8000](http://localhost:8000) in your browser.
-
-## Notes
-
-- Static files are collected at build time in the Docker image.
-- The database data is persisted in a Docker volume (`db_data`).
-- If you want to use Django's development server instead of Gunicorn, edit the `CMD` in the Dockerfile as instructed in the comments.
-- The app service depends on the database and will wait for it to be healthy before starting.
-
 # References
 
 - Quiz part: https://github.com/tomwalker/django_quiz
